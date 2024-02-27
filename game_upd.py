@@ -308,6 +308,8 @@ def credits_menu(online, balance, credits):
                 elif repay_small.handle_event(event):
                     if balance >= 10000:
                         balance -= 10000
+                        sum_credits -= 10000
+                        credits[0] -= 1
                     else:
                         enough_money_warn_time = time.time()
 
@@ -321,6 +323,8 @@ def credits_menu(online, balance, credits):
                 elif repay_medium.handle_event(event):
                     if balance >= 50000:
                         balance -= 50000
+                        sum_credits -= 50000
+                        credits[1] -= 1
                     else:
                         enough_money_warn_time = time.time()
                 elif big_credit.handle_event(event):
@@ -334,6 +338,8 @@ def credits_menu(online, balance, credits):
                 elif repay_big.handle_event(event):
                     if balance >= 100000:
                         balance -= 100000
+                        sum_credits -= 100000
+                        credits[2] -= 1
                     else:
                         enough_money_warn_time = time.time()
                 elif back_button.handle_event(event):
