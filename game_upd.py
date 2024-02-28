@@ -201,6 +201,7 @@ def stocks_menu(online, balance, avai):
     volkswagen = StockButton(30, 410, w-200, 50, "Volkswagen Group", "images/Volkswagen.png", str(cost), str(avai))
     toyota = StockButton(30, 480, w-200, 50, "Toyota Motor Corp.", "images/toyota.png", str(cost), str(avai))
 
+
     running = True
     while running:
         screen.fill((17, 50, 84))
