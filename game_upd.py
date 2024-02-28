@@ -34,9 +34,9 @@ if time.time() - last_update >= 60:
 def start_menu(online, balance, credits):
     global last_update
 
-    start_button = Button(250, 300, 300, 50, "Start", None)
-    exit_button = Button(250, 370, 300, 50, "Exit", None)
-    setting_button = Button(570, 530, 200, 50, "Settings", None)
+    start_button = Button(250, 300, 300, 50, "Start")
+    exit_button = Button(250, 370, 300, 50, "Exit")
+    setting_button = Button(570, 530, 200, 50, "Settings")
 
     running = True
     while running:
@@ -77,11 +77,11 @@ def start_menu(online, balance, credits):
 
 def main_menu(online, balance, credits):
     global last_update
-    stock_button = Button(250, 220, 300, 50, "Stocks", None)
-    credit_button = Button(250, 290, 300, 50, "Credits", None)
-    news_button = Button(250, 360, 300, 50, "News", None)
-    mm_button = Button(250, 430, 300, 50, "Main Menu", None)
-    account_button = Button(570, 530, 200, 50, username, None)
+    stock_button = Button(250, 220, 300, 50, "Stocks")
+    credit_button = Button(250, 290, 300, 50, "Credits")
+    news_button = Button(250, 360, 300, 50, "News")
+    mm_button = Button(250, 430, 300, 50, "Main Menu")
+    account_button = Button(570, 530, 200, 50, username)
     running = True
     while running:
         screen.fill((17, 50, 84))
@@ -126,7 +126,7 @@ def main_menu(online, balance, credits):
 
 def account(online):
     global last_update
-    back_button = Button(20, 20, 150, 50, "Back", None)
+    back_button = Button(20, 20, 150, 50, "Back")
 
     user_image = pygame.image.load("images/user_image.png")
     user_image = pygame.transform.scale(user_image, (200, 200))
@@ -221,6 +221,14 @@ def stocks_menu(online, balance, avai):
                     main_menu(online, balance, credits)
                 elif apple.handle_event(event):
                     apple_stock(online, balance)
+                elif xiaomi.handle_event(event):
+                    xiaomi_stock(online, balance)
+                elif samsung.handle_event(event):
+                    samsung_stock(online, balance)
+                elif volkswagen.handle_event(event):
+                    volkswagen_stock(online, balance)
+                elif toyota.handle_event(event):
+                    toyota_stock(online, balance)
 
         back_button.draw(screen)
         apple.draw2(screen)
@@ -243,7 +251,6 @@ def stocks_menu(online, balance, avai):
         money_rect = money_txt.get_rect(midleft = (w/2+110,43))
         # date_val_rect = date_val.get_rect(midright=(w / 2 - 170, 43))
         money_val_rect = money_val.get_rect(midright=(w / 2 + 340, 43))
-
 
         screen.blit(stock_txt, stock_rect)
         screen.blit(date_txt, date_rect)
@@ -294,13 +301,13 @@ def settings(online):
 def credits_menu(online, balance, credits):
     global last_update
 
-    small_credit = Button(100, 200, 300, 50, "Small Credit", None)
-    repay_small = Button(400, 200, 300, 50, "Repay", None)
-    medium_credit = Button(100, 300, 300, 50, "Medium Credit", None)
-    repay_medium = Button(400, 300, 300, 50, "Repay", None)
-    big_credit = Button(100, 400, 300, 50, "Big Credit", None)
-    repay_big = Button(400, 400, 300, 50, "Repay", None)
-    back_button = Button(20, 20, 150, 50, "Back", None)
+    small_credit = Button(100, 200, 300, 50, "Small Credit")
+    repay_small = Button(400, 200, 300, 50, "Repay")
+    medium_credit = Button(100, 300, 300, 50, "Medium Credit")
+    repay_medium = Button(400, 300, 300, 50, "Repay")
+    big_credit = Button(100, 400, 300, 50, "Big Credit")
+    repay_big = Button(400, 400, 300, 50, "Repay")
+    back_button = Button(20, 20, 150, 50, "Back")
 
     sum_credits = credits[0] * 10000 + credits[1] * 50000 + credits[2] * 100000
 
@@ -409,6 +416,150 @@ def apple_stock(online, balance):
             # if event.type == pygame.MOUSEBUTTONDOWN:
             #     if back_button.handle_event(event):
             #         main_menu(online)
+
+        font = pygame.font.Font("Fonts/troika.otf", 40)
+
+        title = font.render("Apple Inc.", True, (255,255,255))
+
+        title_rect = title.get_rect(center=(w/2, 50))
+
+        screen.blit(title, title_rect)
+
+        if time.time() - last_update >= 60:
+            online += 1
+            last_update = time.time()
+
+        pygame.display.flip()
+
+
+def xiaomi_stock(online, balance):
+    global last_update
+
+    running = True
+    while running:
+        screen.fill((17, 50, 84))
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    running = False
+            # if event.type == pygame.MOUSEBUTTONDOWN:
+            #     if back_button.handle_event(event):
+            #         main_menu(online)
+
+        font = pygame.font.Font("Fonts/troika.otf", 40)
+
+        title = font.render("Xiaomi Corp.", True, (255, 255, 255))
+
+        title_rect = title.get_rect(center=(w / 2, 50))
+
+        screen.blit(title, title_rect)
+
+
+        if time.time() - last_update >= 60:
+            online += 1
+            last_update = time.time()
+
+        pygame.display.flip()
+
+
+def samsung_stock(online, balance):
+    global last_update
+
+    running = True
+    while running:
+        screen.fill((17, 50, 84))
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    running = False
+            # if event.type == pygame.MOUSEBUTTONDOWN:
+            #     if back_button.handle_event(event):
+            #         main_menu(online)
+
+        font = pygame.font.Font("Fonts/troika.otf", 40)
+
+        title = font.render("Samsung Group", True, (255, 255, 255))
+
+        title_rect = title.get_rect(center=(w / 2, 50))
+
+        screen.blit(title, title_rect)
+
+
+        if time.time() - last_update >= 60:
+            online += 1
+            last_update = time.time()
+
+        pygame.display.flip()
+
+
+def volkswagen_stock(online, balance):
+    global last_update
+
+    running = True
+    while running:
+        screen.fill((17, 50, 84))
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    running = False
+            # if event.type == pygame.MOUSEBUTTONDOWN:
+            #     if back_button.handle_event(event):
+            #         main_menu(online)
+
+        font = pygame.font.Font("Fonts/troika.otf", 40)
+
+        title = font.render("Volkswagen Group", True, (255, 255, 255))
+
+        title_rect = title.get_rect(center=(w / 2, 50))
+
+        screen.blit(title, title_rect)
+
+
+        if time.time() - last_update >= 60:
+            online += 1
+            last_update = time.time()
+
+        pygame.display.flip()
+
+
+def toyota_stock(online, balance):
+    global last_update
+
+    running = True
+    while running:
+        screen.fill((17, 50, 84))
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    running = False
+            # if event.type == pygame.MOUSEBUTTONDOWN:
+            #     if back_button.handle_event(event):
+            #         main_menu(online)
+
+        font = pygame.font.Font("Fonts/troika.otf", 40)
+
+        title = font.render("Toyota Motor Corp.", True, (255, 255, 255))
+
+        title_rect = title.get_rect(center=(w / 2, 50))
+
+        screen.blit(title, title_rect)
+
 
         if time.time() - last_update >= 60:
             online += 1
