@@ -569,4 +569,4 @@ def toyota_stock(online, balance):
 
 
 if __name__ == "__main__":
-    stocks_menu(online, balance, avai)
+    start_menu(online, balance, credits)
